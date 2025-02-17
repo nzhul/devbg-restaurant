@@ -10,7 +10,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { alpha, InputBase, styled } from "@mui/material";
+import { alpha, InputBase, styled, useTheme } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import avatarImage from "../../assets/2.jpg";
 import { Add } from "@mui/icons-material";
@@ -19,6 +19,8 @@ const pages = ["Recipes", "Categories", "My Collection"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function NavBar() {
+  const theme = useTheme();
+
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -82,10 +84,13 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
+            href="/"
             sx={{
               mr: 2,
-              color: "inherit",
+              color: theme.palette.primary.main,
               textDecoration: "none",
+              fontWeight: 800,
+              fontSize: 26,
             }}
           >
             CookBook
@@ -100,6 +105,7 @@ function NavBar() {
                   fontSize: 16,
                   fontWeight: 300,
                   textTransform: "none",
+                  color: theme.palette.grey[500],
                 }}
               >
                 {page}
