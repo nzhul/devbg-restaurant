@@ -8,8 +8,14 @@ import {
   Stack,
   Typography,
   Box,
+  useTheme,
 } from "@mui/material";
-import { AccessTimeFilled, Star } from "@mui/icons-material";
+import {
+  AccessTimeFilled,
+  Bookmark,
+  BookmarkBorder,
+  Star,
+} from "@mui/icons-material";
 
 import foodImage1 from "../assets/food-pics/1.png";
 import foodImage2 from "../assets/food-pics/2.png";
@@ -29,6 +35,7 @@ interface Recipe {
   rating: number;
   timeInMinutes: number;
   image: string;
+  bookmarked?: boolean;
   chef: {
     name: string;
     avatar: string;
@@ -70,6 +77,7 @@ const recipes: Recipe[] = [
     rating: 4.7,
     timeInMinutes: 25,
     image: foodImage3,
+    bookmarked: true,
     chef: {
       name: "Chef Alex",
       avatar: chefImage3,
@@ -91,6 +99,7 @@ const recipes: Recipe[] = [
 ];
 
 export default function RecipeGallery() {
+  const theme = useTheme();
   return (
     <Grid container spacing={2}>
       {recipes.map((recipe) => (
@@ -103,7 +112,6 @@ export default function RecipeGallery() {
               alt={recipe.title}
             />
 
-            {/* Time chip */}
             <Chip
               icon={<AccessTimeFilled sx={{ fontSize: 16 }} />}
               label={`${recipe.timeInMinutes} min`}
@@ -112,10 +120,10 @@ export default function RecipeGallery() {
                 position: "absolute",
                 top: 8,
                 right: 8,
-                backgroundColor: "rgba(0, 0, 0, 0.6)",
-                color: "white",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                color: theme.palette.text.primary,
                 "& .MuiChip-icon": {
-                  color: "white",
+                  color: theme.palette.text.primary,
                 },
               }}
             />
@@ -124,10 +132,9 @@ export default function RecipeGallery() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                height: "calc(100% - 200px)",
+                height: "calc(100% - 190px)",
               }}
             >
-              {/* Category and Rating */}
               <Stack
                 direction="row"
                 justifyContent="space-between"
@@ -136,23 +143,34 @@ export default function RecipeGallery() {
               >
                 <Chip label={recipe.category} size="small" />
                 <Stack direction="row" spacing={0.5} alignItems="center">
-                  <Star sx={{ fontSize: 16 }} />
+                  <Star
+                    sx={{
+                      fontSize: 16,
+                      color: "#EAB308",
+                      position: "relative",
+                      top: -2,
+                    }}
+                  />
                   <Typography variant="body2">{recipe.rating}</Typography>
                 </Stack>
               </Stack>
 
-              {/* Title and Description */}
               <Typography variant="h6" gutterBottom>
                 {recipe.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary" paragraph>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                paragraph
+                sx={{
+                  color: theme.palette.text.secondary,
+                }}
+              >
                 {recipe.description}
               </Typography>
 
-              {/* Spacer */}
               <Box sx={{ flexGrow: 1 }} />
 
-              {/* Chef Info - now using Box */}
               <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
                 <Avatar
                   src={recipe.chef.avatar}
@@ -162,6 +180,15 @@ export default function RecipeGallery() {
                 <Typography variant="body2" color="text.secondary">
                   by {recipe.chef.name}
                 </Typography>
+                {recipe.bookmarked ? (
+                  <Bookmark
+                    sx={{ ml: "auto", color: theme.palette.primary.main }}
+                  />
+                ) : (
+                  <BookmarkBorder
+                    sx={{ ml: "auto", color: theme.palette.primary.main }}
+                  />
+                )}
               </Box>
             </CardContent>
           </Card>

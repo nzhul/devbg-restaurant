@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ToggleButton, ToggleButtonGroup, Button, Box } from "@mui/material";
-import { FilterList, Sort } from "@mui/icons-material";
+import { FilterList, Restaurant, Sort } from "@mui/icons-material";
 
 const FilterRow: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("main-dishes");
@@ -28,7 +28,9 @@ const FilterRow: React.FC = () => {
         onChange={handleCategoryChange}
         aria-label="category filter"
       >
-        <ToggleButton value="all">🍽 All Categories</ToggleButton>
+        <ToggleButton value="all">
+          <Restaurant sx={{ fontSize: 20, mr: 1 }} /> All Categories
+        </ToggleButton>
         <ToggleButton value="main-dishes">Main Dishes</ToggleButton>
         <ToggleButton value="desserts">Desserts</ToggleButton>
         <ToggleButton value="beverages">Beverages</ToggleButton>
@@ -37,10 +39,14 @@ const FilterRow: React.FC = () => {
 
       {/* Right: Sort and Filter Buttons */}
       <Box display="flex" gap={1}>
-        <Button variant="contained" startIcon={<Sort />}>
+        <Button variant="contained" color="secondary" startIcon={<Sort />}>
           Sort
         </Button>
-        <Button variant="contained" startIcon={<FilterList />}>
+        <Button
+          variant="contained"
+          color="secondary"
+          startIcon={<FilterList />}
+        >
           Filter
         </Button>
       </Box>

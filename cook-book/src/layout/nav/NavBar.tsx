@@ -15,7 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import avatarImage from "../../assets/2.jpg";
 import { Add } from "@mui/icons-material";
 
-const pages = ["Recipes", "Categories", "My Collection"];
+const pages = ["Home", "Recipes", "Categories", "My Collection"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function NavBar() {
@@ -35,10 +35,11 @@ function NavBar() {
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
+    color: theme.palette.text.primary,
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.secondary.light, 0.7),
     "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+      backgroundColor: alpha(theme.palette.secondary.light, 1),
     },
     border: `1px solid ${theme.palette.custom.searchBorder}`,
     marginLeft: 0,
@@ -64,7 +65,6 @@ function NavBar() {
     width: "100%",
     "& .MuiInputBase-input": {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create("width"),
       [theme.breakpoints.up("sm")]: {
@@ -77,7 +77,12 @@ function NavBar() {
   }));
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "transparent",
+      }}
+    >
       <Container>
         <Toolbar disableGutters>
           <Typography
@@ -103,9 +108,9 @@ function NavBar() {
                 sx={{
                   my: 2,
                   fontSize: 16,
-                  fontWeight: 300,
+                  fontWeight: 400,
                   textTransform: "none",
-                  color: theme.palette.grey[500],
+                  color: theme.palette.text.primary,
                 }}
               >
                 {page}
@@ -129,7 +134,7 @@ function NavBar() {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <Button startIcon={<Add />} variant="contained">
+            <Button startIcon={<Add />} variant="contained" color="primary">
               <Typography sx={{ color: "white", fontSize: 16 }}>
                 New Recipe
               </Typography>
