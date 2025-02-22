@@ -98,7 +98,7 @@ function NavBar() {
               fontSize: 26,
             }}
           >
-            CookBook
+            Recipies Catalogue
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
