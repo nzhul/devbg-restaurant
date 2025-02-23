@@ -1,386 +1,570 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Food Delivery App</title>
     <style>
       :root {
-          /* Primary colors */
-          --color-primary: #ff6b2c;
-          --color-star: #ffd700;
-          
-          /* Background colors */
-          --color-background: #1a1d26;
-          --color-surface: #2a2d36;
-          
-          /* Text colors */
-          --color-text-primary: #ffffff;
-          --color-text-secondary: #6c7280;
-          
-          /* Semantic colors */
-          --color-badge: var(--color-primary);
-          --color-price: var(--color-primary);
-          --color-active: var(--color-primary);
-          --color-link: var(--color-primary);
+        /* Primary colors */
+        --color-primary: #ff6b2c;
+        --color-star: #ffd700;
+
+        /* Background colors */
+        --color-background: #1a1d26;
+        --color-surface: #2a2d36;
+
+        /* Text colors */
+        --color-text-primary: #ffffff;
+        --color-text-secondary: #6c7280;
+
+        /* Semantic colors */
+        --color-badge: var(--color-primary);
+        --color-price: var(--color-primary);
+        --color-active: var(--color-primary);
+        --color-link: var(--color-primary);
       }
 
       * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
       }
 
       body {
-          background-color: var(--color-background);
-          color: var(--color-text-primary);
+        background-color: var(--color-background);
+        color: var(--color-text-primary);
       }
 
       .container {
-          max-width: 430px;
-          margin: 0 auto;
-          padding: 16px;
+        max-width: 430px;
+        margin: 0 auto;
+        padding: 16px;
+        min-height: 1100px;
       }
 
       .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
       }
 
       .location {
-          display: flex;
-          align-items: center;
-          gap: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
 
       .location-text {
-          font-size: 14px;
-          opacity: 0.7;
+        font-size: 14px;
+        opacity: 0.7;
       }
 
       .profile-pic {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background-color: var(--color-surface);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: var(--color-surface);
       }
 
       .search-bar {
-          background-color: var(--color-surface);
-          padding: 12px 16px;
-          border-radius: 12px;
-          margin-bottom: 24px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
+        background-color: var(--color-surface);
+        padding: 12px 16px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
 
       .search-bar input {
-          background: none;
-          border: none;
-          color: var(--color-text-primary);
-          width: 100%;
-          outline: none;
+        background: none;
+        border: none;
+        color: var(--color-text-primary);
+        width: 100%;
+        outline: none;
       }
 
       .search-bar input::placeholder {
-          color: var(--color-text-secondary);
+        color: var(--color-text-secondary);
+      }
+
+      .search-bar svg {
+        fill: var(--color-text-secondary);
       }
 
       .categories {
-          margin-bottom: 24px;
+        margin-bottom: 24px;
       }
 
       .section-title {
-          font-size: 20px;
-          margin-bottom: 16px;
+        font-size: 20px;
+        margin-bottom: 16px;
       }
 
       .category-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 16px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
       }
 
       .category-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
       }
 
       .category-icon {
-          width: 64px;
-          height: 64px;
-          border-radius: 50%;
-          background-color: var(--color-surface);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background-color: var(--color-surface);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .category-icon.active {
-          background-color: var(--color-active);
+        background-color: var(--color-active);
       }
 
       .category-name {
-          font-size: 14px;
-          color: var(--color-text-secondary);
+        font-size: 14px;
+        color: var(--color-text-secondary);
       }
 
       .popular-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
       }
 
       .see-all {
-          color: var(--color-link);
-          text-decoration: none;
-          font-size: 14px;
+        color: var(--color-link);
+        text-decoration: none;
+        font-size: 14px;
       }
 
       .popular-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 16px;
-          margin-bottom: 24px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
       }
 
       .food-card {
-          background-color: var(--color-surface);
-          border-radius: 16px;
-          overflow: hidden;
-          position: relative;
+        background-color: var(--color-surface);
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
       }
 
       .food-image {
-          width: 100%;
-          height: 140px;
-          object-fit: cover;
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
       }
 
       .food-price {
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          background-color: var(--color-price);
-          padding: 4px 8px;
-          border-radius: 8px;
-          font-weight: bold;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background-color: var(--color-price);
+        padding: 4px 8px;
+        border-radius: 8px;
+        font-weight: bold;
       }
 
       .food-info {
-          padding: 12px;
+        padding: 12px;
       }
 
       .food-name {
-          font-weight: bold;
-          margin-bottom: 4px;
+        font-weight: bold;
+        margin-bottom: 4px;
       }
 
       .food-description {
-          font-size: 12px;
-          color: var(--color-text-secondary);
+        font-size: 12px;
+        color: var(--color-text-secondary);
       }
 
       .featured-item {
-          background-color: var(--color-surface);
-          border-radius: 16px;
-          padding: 12px;
-          display: flex;
-          gap: 16px;
-          margin-bottom: 16px;
+        background-color: var(--color-surface);
+        border-radius: 16px;
+        padding: 12px;
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
       }
 
       .featured-image {
-          width: 80px;
-          height: 80px;
-          border-radius: 12px;
-          object-fit: cover;
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        object-fit: cover;
       }
 
       .featured-info {
-          flex: 1;
+        flex: 1;
       }
 
       .featured-price {
-          color: var(--color-price);
-          font-weight: bold;
+        color: var(--color-price);
+        font-weight: bold;
       }
 
       .rating {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          margin-top: 8px;
-          font-size: 14px;
-          color: var(--color-text-secondary);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 8px;
+        font-size: 14px;
+        color: var(--color-text-secondary);
       }
 
       .star {
-          color: var(--color-star);
+        color: var(--color-star);
       }
 
       .bottom-nav {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-color: var(--color-surface);
-          display: flex;
-          justify-content: space-around;
-          padding: 16px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--color-surface);
+        display: flex;
+        justify-content: space-around;
+        padding: 16px;
+      }
+
+      .bottom-nav svg.home {
+        fill: var(--color-active);
       }
 
       .nav-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 4px;
-          color: var(--color-text-secondary);
-          text-decoration: none;
-          font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: var(--color-text-secondary);
+        text-decoration: none;
+        font-size: 12px;
       }
 
       .nav-item.active {
-          color: var(--color-active);
+        color: var(--color-active);
       }
 
       .cart-badge {
-          background-color: var(--color-badge);
-          color: var(--color-text-primary);
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          font-size: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          top: -4px;
-          right: -4px;
+        background-color: var(--color-badge);
+        color: var(--color-text-primary);
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -4px;
+        right: -4px;
       }
-  </style>
-</head>
-<body>
+    </style>
+  </head>
+  <body>
     <div class="container">
-        <header class="header">
-            <div class="location">
-                <span>📍</span>
-                <div>
-                    <div>Delivery to</div>
-                    <div class="location-text">123 Main Street</div>
-                </div>
-            </div>
-            <div class="profile-pic"></div>
-        </header>
+      <header class="header">
+        <div class="location">
+          <svg
+            width="12"
+            height="16"
+            viewBox="0 0 12 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.74062 15.6C8.34375 13.5938 12 8.73125 12 6C12 2.6875 9.3125 0 6 0C2.6875 0 0 2.6875 0 6C0 8.73125 3.65625 13.5938 5.25938 15.6C5.64375 16.0781 6.35625 16.0781 6.74062 15.6ZM6 4C6.53043 4 7.03914 4.21071 7.41421 4.58579C7.78929 4.96086 8 5.46957 8 6C8 6.53043 7.78929 7.03914 7.41421 7.41421C7.03914 7.78929 6.53043 8 6 8C5.46957 8 4.96086 7.78929 4.58579 7.41421C4.21071 7.03914 4 6.53043 4 6C4 5.46957 4.21071 4.96086 4.58579 4.58579C4.96086 4.21071 5.46957 4 6 4Z"
+              fill="#F97316"
+            />
+          </svg>
 
-        <div class="search-bar">
-            <span>🔍</span>
-            <input type="text" placeholder="Search for dishes...">
+          <div>
+            <div>Delivery to</div>
+            <div class="location-text">123 Main Street</div>
+          </div>
         </div>
+        <div class="profile-pic">
+          <img src="./src//img/user-photo.png" />
+        </div>
+      </header>
 
-        <section class="categories">
-            <h2 class="section-title">Categories</h2>
-            <div class="category-grid">
-                <div class="category-item">
-                    <div class="category-icon active">🍔</div>
-                    <span class="category-name">Burgers</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">🍕</div>
-                    <span class="category-name">Pizza</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">🍝</div>
-                    <span class="category-name">Pasta</span>
-                </div>
-                <div class="category-item">
-                    <div class="category-icon">🐟</div>
-                    <span class="category-name">Seafood</span>
-                </div>
-            </div>
-        </section>
+      <div class="search-bar">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_7_1388)">
+            <path
+              d="M13 6.5C13 7.93437 12.5344 9.25938 11.75 10.3344L15.7063 14.2937C16.0969 14.6844 16.0969 15.3188 15.7063 15.7094C15.3156 16.1 14.6812 16.1 14.2906 15.7094L10.3344 11.75C9.25938 12.5375 7.93437 13 6.5 13C2.90937 13 0 10.0906 0 6.5C0 2.90937 2.90937 0 6.5 0C10.0906 0 13 2.90937 13 6.5ZM6.5 11C7.09095 11 7.67611 10.8836 8.22208 10.6575C8.76804 10.4313 9.26412 10.0998 9.68198 9.68198C10.0998 9.26412 10.4313 8.76804 10.6575 8.22208C10.8836 7.67611 11 7.09095 11 6.5C11 5.90905 10.8836 5.32389 10.6575 4.77792C10.4313 4.23196 10.0998 3.73588 9.68198 3.31802C9.26412 2.90016 8.76804 2.56869 8.22208 2.34254C7.67611 2.1164 7.09095 2 6.5 2C5.90905 2 5.32389 2.1164 4.77792 2.34254C4.23196 2.56869 3.73588 2.90016 3.31802 3.31802C2.90016 3.73588 2.56869 4.23196 2.34254 4.77792C2.1164 5.32389 2 5.90905 2 6.5C2 7.09095 2.1164 7.67611 2.34254 8.22208C2.56869 8.76804 2.90016 9.26412 3.31802 9.68198C3.73588 10.0998 4.23196 10.4313 4.77792 10.6575C5.32389 10.8836 5.90905 11 6.5 11Z"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_7_1388">
+              <path d="M0 0H16V16H0V0Z" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
 
-        <section class="popular">
-            <div class="popular-header">
-                <h2 class="section-title">Popular Dishes</h2>
-                <a href="#" class="see-all">See all</a>
-            </div>
-            <div class="popular-grid">
-                <div class="food-card">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame-cHobPepQowRkOmQekmnowvmkZMr4En.png" alt="Classic Burger" class="food-image">
-                    <span class="food-price">$12.99</span>
-                    <div class="food-info">
-                        <div class="food-name">Classic Burger</div>
-                        <div class="food-description">with french fries</div>
-                    </div>
-                </div>
-                <div class="food-card">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame-cHobPepQowRkOmQekmnowvmkZMr4En.png" alt="Pepperoni Pizza" class="food-image">
-                    <span class="food-price">$15.99</span>
-                    <div class="food-info">
-                        <div class="food-name">Pepperoni Pizza</div>
-                        <div class="food-description">extra cheese</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <input type="text" placeholder="Search for dishes..." />
+      </div>
 
-        <section class="featured">
-            <h2 class="section-title">Featured</h2>
-            <div class="featured-item">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame-cHobPepQowRkOmQekmnowvmkZMr4En.png" alt="Grilled Salmon" class="featured-image">
-                <div class="featured-info">
-                    <div class="food-name">Grilled Salmon</div>
-                    <div class="food-description">Fresh salmon with grilled vegetables</div>
-                    <div class="rating">
-                        <span class="star">⭐</span>
-                        <span>4.8</span>
-                        <span>(124)</span>
-                    </div>
-                </div>
-                <div class="featured-price">$24.99</div>
+      <section class="categories">
+        <h2 class="section-title">Categories</h2>
+        <div class="category-grid">
+          <div class="category-item">
+            <div class="category-icon active">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.86406 10.5C2.10937 10.5 1.5 9.89062 1.5 9.13594C1.5 9.04687 1.50937 8.9625 1.52812 8.87344C1.77656 7.88906 3.69375 1.5 12 1.5C20.3062 1.5 22.2234 7.88906 22.4719 8.87344C22.4953 8.9625 22.5 9.04687 22.5 9.13594C22.5 9.89062 21.8906 10.5 21.1359 10.5H2.86406ZM6.75 6C6.75 5.80109 6.67098 5.61032 6.53033 5.46967C6.38968 5.32902 6.19891 5.25 6 5.25C5.80109 5.25 5.61032 5.32902 5.46967 5.46967C5.32902 5.61032 5.25 5.80109 5.25 6C5.25 6.19891 5.32902 6.38968 5.46967 6.53033C5.61032 6.67098 5.80109 6.75 6 6.75C6.19891 6.75 6.38968 6.67098 6.53033 6.53033C6.67098 6.38968 6.75 6.19891 6.75 6ZM18 6.75C18.1989 6.75 18.3897 6.67098 18.5303 6.53033C18.671 6.38968 18.75 6.19891 18.75 6C18.75 5.80109 18.671 5.61032 18.5303 5.46967C18.3897 5.32902 18.1989 5.25 18 5.25C17.8011 5.25 17.6103 5.32902 17.4697 5.46967C17.329 5.61032 17.25 5.80109 17.25 6C17.25 6.19891 17.329 6.38968 17.4697 6.53033C17.6103 6.67098 17.8011 6.75 18 6.75ZM12.75 4.5C12.75 4.30109 12.671 4.11032 12.5303 3.96967C12.3897 3.82902 12.1989 3.75 12 3.75C11.8011 3.75 11.6103 3.82902 11.4697 3.96967C11.329 4.11032 11.25 4.30109 11.25 4.5C11.25 4.69891 11.329 4.88968 11.4697 5.03033C11.6103 5.17098 11.8011 5.25 12 5.25C12.1989 5.25 12.3897 5.17098 12.5303 5.03033C12.671 4.88968 12.75 4.69891 12.75 4.5ZM0.75 14.25C0.75 13.0078 1.75781 12 3 12H21C22.2422 12 23.25 13.0078 23.25 14.25C23.25 15.4922 22.2422 16.5 21 16.5H3C1.75781 16.5 0.75 15.4922 0.75 14.25ZM1.5 18.75C1.5 18.3375 1.8375 18 2.25 18H21.75C22.1625 18 22.5 18.3375 22.5 18.75V19.5C22.5 21.1547 21.1547 22.5 19.5 22.5H4.5C2.84531 22.5 1.5 21.1547 1.5 19.5V18.75Z"
+                  fill="white"
+                />
+              </svg>
             </div>
-            <div class="featured-item">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame-cHobPepQowRkOmQekmnowvmkZMr4En.png" alt="Pasta Carbonara" class="featured-image">
-                <div class="featured-info">
-                    <div class="food-name">Pasta Carbonara</div>
-                    <div class="food-description">Creamy pasta with bacon</div>
-                    <div class="rating">
-                        <span class="star">⭐</span>
-                        <span>4.7</span>
-                        <span>(98)</span>
-                    </div>
-                </div>
-                <div class="featured-price">$18.99</div>
+            <span class="category-name">Burgers</span>
+          </div>
+          <div class="category-item">
+            <div class="category-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_7_1463)">
+                  <path
+                    d="M7.95481 0.0424005C6.88606 -0.0325995 5.99075 0.69865 5.72825 1.66896L5.17512 3.75021C5.19856 3.75021 5.22669 3.75021 5.25012 3.75021C13.5329 3.75021 20.2501 10.4674 20.2501 18.7502C20.2501 18.7737 20.2501 18.8018 20.2501 18.8252L22.3314 18.2721C23.3064 18.0143 24.0329 17.1143 23.9579 16.0455C23.3673 7.47678 16.5236 0.633025 7.95481 0.0424005ZM18.7407 19.2283C18.7454 19.069 18.7501 18.9096 18.7501 18.7502C18.7501 11.2924 12.7079 5.25021 5.25012 5.25021C5.09075 5.25021 4.93137 5.2549 4.772 5.25959L0.02356 23.058C-0.0467525 23.3158 0.0282475 23.5924 0.215748 23.7799C0.403248 23.9674 0.67981 24.0424 0.937623 23.9721L18.7407 19.2283ZM8.25012 9.75021C8.64795 9.75021 9.02948 9.90825 9.31078 10.1896C9.59209 10.4709 9.75012 10.8524 9.75012 11.2502C9.75012 11.648 9.59209 12.0296 9.31078 12.3109C9.02948 12.5922 8.64795 12.7502 8.25012 12.7502C7.8523 12.7502 7.47077 12.5922 7.18946 12.3109C6.90816 12.0296 6.75012 11.648 6.75012 11.2502C6.75012 10.8524 6.90816 10.4709 7.18946 10.1896C7.47077 9.90825 7.8523 9.75021 8.25012 9.75021ZM11.2501 15.7502C11.2501 15.3524 11.4082 14.9709 11.6895 14.6896C11.9708 14.4082 12.3523 14.2502 12.7501 14.2502C13.1479 14.2502 13.5295 14.4082 13.8108 14.6896C14.0921 14.9709 14.2501 15.3524 14.2501 15.7502C14.2501 16.148 14.0921 16.5296 13.8108 16.8109C13.5295 17.0922 13.1479 17.2502 12.7501 17.2502C12.3523 17.2502 11.9708 17.0922 11.6895 16.8109C11.4082 16.5296 11.2501 16.148 11.2501 15.7502ZM4.50012 18.0002C4.50012 17.6024 4.65816 17.2209 4.93946 16.9396C5.22077 16.6582 5.6023 16.5002 6.00012 16.5002C6.39795 16.5002 6.77948 16.6582 7.06078 16.9396C7.34209 17.2209 7.50012 17.6024 7.50012 18.0002C7.50012 18.398 7.34209 18.7796 7.06078 19.0609C6.77948 19.3422 6.39795 19.5002 6.00012 19.5002C5.6023 19.5002 5.22077 19.3422 4.93946 19.0609C4.65816 18.7796 4.50012 18.398 4.50012 18.0002Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
             </div>
-        </section>
+            <span class="category-name">Pizza</span>
+          </div>
+          <div class="category-item">
+            <div class="category-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 9C0 7.34531 1.34531 6 3 6C3.02344 6 3.05156 6 3.075 6C3.42188 4.28906 4.93594 3 6.75 3C7.45312 3 8.10938 3.19219 8.66719 3.525C9.29062 2.325 10.5516 1.5 12 1.5C13.4484 1.5 14.7094 2.325 15.3328 3.525C15.8906 3.19219 16.5469 3 17.25 3C19.0641 3 20.5781 4.28906 20.925 6C20.9484 6 20.9766 6 21 6C22.6547 6 24 7.34531 24 9C24 9.54844 23.8547 10.0594 23.5969 10.5H0.403125C0.145313 10.0594 0 9.54844 0 9ZM0 13.2844C0 12.5766 0.576562 12 1.28437 12H22.7156C23.4234 12 24 12.5766 24 13.2844C24 16.5891 21.9187 19.4109 18.9984 20.5078L18.9141 21.1875C18.8203 21.9375 18.1828 22.5 17.4234 22.5H6.57187C5.81719 22.5 5.175 21.9375 5.08125 21.1875L4.99687 20.5125C2.08125 19.4109 0 16.5891 0 13.2844Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <span class="category-name">Pasta</span>
+          </div>
+          <div class="category-item">
+            <div class="category-icon">
+              <svg
+                width="28"
+                height="24"
+                viewBox="0 0 28 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_7_1465)">
+                  <path
+                    d="M8.96118 6.63281C10.7987 5.08594 13.2784 3.75 16.2502 3.75C19.2221 3.75 21.7018 5.08594 23.5393 6.63281C25.3721 8.17969 26.6752 10.0266 27.3362 11.3109C27.5565 11.7422 27.5565 12.2531 27.3362 12.6844C26.6752 13.9688 25.3721 15.8156 23.5393 17.3625C21.7018 18.9141 19.2221 20.25 16.2502 20.25C13.2784 20.25 10.7987 18.9141 8.96118 17.3672C8.2018 16.725 7.53149 16.0312 6.95961 15.3469L2.75493 17.7938C2.16899 18.1359 1.42368 18.0422 0.940863 17.5641C0.458051 17.0859 0.359613 16.3453 0.697113 15.7547L2.84399 12L0.697113 8.24531C0.359613 7.65469 0.462738 6.91406 0.945551 6.43594C1.42836 5.95781 2.16899 5.86406 2.75961 6.20625L6.9643 8.65781C7.53618 7.97344 8.20649 7.27969 8.96586 6.6375L8.96118 6.63281ZM21.5002 12C21.5002 11.6022 21.3422 11.2206 21.0609 10.9393C20.7796 10.658 20.3981 10.5 20.0002 10.5C19.6024 10.5 19.2209 10.658 18.9396 10.9393C18.6583 11.2206 18.5002 11.6022 18.5002 12C18.5002 12.3978 18.6583 12.7794 18.9396 13.0607C19.2209 13.342 19.6024 13.5 20.0002 13.5C20.3981 13.5 20.7796 13.342 21.0609 13.0607C21.3422 12.7794 21.5002 12.3978 21.5002 12Z"
+                    fill="white"
+                  />
+                </g>
+              </svg>
+            </div>
+            <span class="category-name">Seafood</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="popular">
+        <div class="popular-header">
+          <h2 class="section-title">Popular Dishes</h2>
+          <a href="#" class="see-all">See all</a>
+        </div>
+        <div class="popular-grid">
+          <div class="food-card">
+            <img
+              src="src/img/01-food-image.png"
+              alt="Classic Burger"
+              class="food-image"
+            />
+            <span class="food-price">$12.99</span>
+            <div class="food-info">
+              <div class="food-name">Classic Burger</div>
+              <div class="food-description">with french fries</div>
+            </div>
+          </div>
+          <div class="food-card">
+            <img
+              src="src/img/02-food-image.png"
+              alt="Pepperoni Pizza"
+              class="food-image"
+            />
+            <span class="food-price">$15.99</span>
+            <div class="food-info">
+              <div class="food-name">Pepperoni Pizza</div>
+              <div class="food-description">extra cheese</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured">
+        <h2 class="section-title">Featured</h2>
+        <div class="featured-item">
+          <img
+            src="src/img/03-food-salmon.png"
+            alt="Grilled Salmon"
+            class="featured-image"
+          />
+          <div class="featured-info">
+            <div class="food-name">Grilled Salmon</div>
+            <div class="food-description">
+              Fresh salmon with grilled vegetables
+            </div>
+            <div class="rating">
+              <span class="star">⭐</span>
+              <span>4.8</span>
+              <span>(124)</span>
+            </div>
+          </div>
+          <div class="featured-price">$24.99</div>
+        </div>
+        <div class="featured-item">
+          <img
+            src="src/img/04-food-pasta.png"
+            alt="Pasta Carbonara"
+            class="featured-image"
+          />
+          <div class="featured-info">
+            <div class="food-name">Pasta Carbonara</div>
+            <div class="food-description">Creamy pasta with bacon</div>
+            <div class="rating">
+              <span class="star">⭐</span>
+              <span>4.7</span>
+              <span>(98)</span>
+            </div>
+          </div>
+          <div class="featured-price">$18.99</div>
+        </div>
+        <div class="featured-item">
+          <img
+            src="src/img/05-food-desert.png"
+            alt="Pasta Carbonara"
+            class="featured-image"
+          />
+          <div class="featured-info">
+            <div class="food-name">Tropical Smoothie</div>
+            <div class="food-description">
+              Fresh fruit smoothie topped with granola and coconut...
+            </div>
+            <div class="rating">
+              <span class="star">⭐</span>
+              <span>4.7</span>
+              <span>(98)</span>
+            </div>
+          </div>
+          <div class="featured-price">$12.99</div>
+        </div>
+      </section>
     </div>
 
     <nav class="bottom-nav">
-        <a href="#" class="nav-item active">
-            <span>🏠</span>
-            <span>Home</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span>❤️</span>
-            <span>Favorites</span>
-        </a>
-        <a href="#" class="nav-item" style="position: relative;">
-            <span>🛒</span>
-            <span>Cart</span>
-            <span class="cart-badge">2</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span>⚙️</span>
-            <span>Settings</span>
-        </a>
+      <a href="#" class="nav-item active">
+        <svg
+          width="22"
+          height="18"
+          viewBox="0 0 24 20"
+          class="home"
+          xmlns="http://www.w3.org/2000/svg"
+          style="margin-bottom: 2px"
+        >
+          <path
+            d="M23.3203 9.98047C23.3203 10.6836 22.7344 11.2344 22.0703 11.2344H20.8203L20.8477 17.4922C20.8477 17.5977 20.8398 17.7031 20.8281 17.8086V18.4375C20.8281 19.3008 20.1289 20 19.2656 20H18.6406C18.5977 20 18.5547 20 18.5117 19.9961C18.457 20 18.4023 20 18.3477 20H17.0781H16.1406C15.2773 20 14.5781 19.3008 14.5781 18.4375V17.5V15C14.5781 14.3086 14.0195 13.75 13.3281 13.75H10.8281C10.1367 13.75 9.57812 14.3086 9.57812 15V17.5V18.4375C9.57812 19.3008 8.87891 20 8.01562 20H7.07812H5.83203C5.77344 20 5.71484 19.9961 5.65625 19.9922C5.60938 19.9961 5.5625 20 5.51562 20H4.89062C4.02734 20 3.32812 19.3008 3.32812 18.4375V14.0625C3.32812 14.0273 3.32812 13.9883 3.33203 13.9531V11.2344H2.07812C1.375 11.2344 0.828125 10.6875 0.828125 9.98047C0.828125 9.62891 0.945312 9.31641 1.21875 9.04297L11.2344 0.3125C11.5078 0.0390625 11.8203 0 12.0938 0C12.3672 0 12.6797 0.078125 12.9141 0.273438L22.8906 9.04297C23.2031 9.31641 23.3594 9.62891 23.3203 9.98047Z"
+          />
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="#" class="nav-item">
+        <svg
+          width="21"
+          height="18"
+          viewBox="0 0 21 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="margin-bottom: 2px"
+        >
+          <path
+            d="M2.17188 10.7343L9.23047 17.3242C9.52344 17.5976 9.91016 17.75 10.3125 17.75C10.7148 17.75 11.1016 17.5976 11.3945 17.3242L18.4531 10.7343C19.6406 9.62887 20.3125 8.07809 20.3125 6.457V6.23043C20.3125 3.49997 18.3398 1.17184 15.6484 0.722621C13.8672 0.425746 12.0547 1.00778 10.7812 2.28122L10.3125 2.74997L9.84375 2.28122C8.57031 1.00778 6.75781 0.425746 4.97656 0.722621C2.28516 1.17184 0.3125 3.49997 0.3125 6.23043V6.457C0.3125 8.07809 0.984375 9.62887 2.17188 10.7343Z"
+            fill="#9CA3AF"
+          />
+        </svg>
+
+        <span>Favorites</span>
+      </a>
+      <a href="#" class="nav-item" style="position: relative">
+        <svg
+          width="18"
+          height="20"
+          viewBox="0 0 18 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="margin-bottom: 2px"
+        >
+          <path
+            d="M6.29688 4.375C6.29688 2.99609 7.41797 1.875 8.79688 1.875C10.1758 1.875 11.2969 2.99609 11.2969 4.375V6.25H6.29688V4.375ZM4.42188 6.25H1.92188C0.886719 6.25 0.046875 7.08984 0.046875 8.125V16.25C0.046875 18.3203 1.72656 20 3.79688 20H13.7969C15.8672 20 17.5469 18.3203 17.5469 16.25V8.125C17.5469 7.08984 16.707 6.25 15.6719 6.25H13.1719V4.375C13.1719 1.95703 11.2148 0 8.79688 0C6.37891 0 4.42188 1.95703 4.42188 4.375V6.25ZM5.35938 8.125C5.60802 8.125 5.84647 8.22377 6.02229 8.39959C6.1981 8.5754 6.29688 8.81386 6.29688 9.0625C6.29688 9.31114 6.1981 9.5496 6.02229 9.72541C5.84647 9.90123 5.60802 10 5.35938 10C5.11073 10 4.87228 9.90123 4.69646 9.72541C4.52065 9.5496 4.42188 9.31114 4.42188 9.0625C4.42188 8.81386 4.52065 8.5754 4.69646 8.39959C4.87228 8.22377 5.11073 8.125 5.35938 8.125ZM11.2969 9.0625C11.2969 8.81386 11.3956 8.5754 11.5715 8.39959C11.7473 8.22377 11.9857 8.125 12.2344 8.125C12.483 8.125 12.7215 8.22377 12.8973 8.39959C13.0731 8.5754 13.1719 8.81386 13.1719 9.0625C13.1719 9.31114 13.0731 9.5496 12.8973 9.72541C12.7215 9.90123 12.483 10 12.2344 10C11.9857 10 11.7473 9.90123 11.5715 9.72541C11.3956 9.5496 11.2969 9.31114 11.2969 9.0625Z"
+            fill="#9CA3AF"
+          />
+        </svg>
+
+        <span>Cart</span>
+        <span class="cart-badge">2</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span
+          ><svg
+            width="19"
+            height="20"
+            viewBox="0 0 19 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.918 6.50781C19.043 6.84766 18.9375 7.22656 18.668 7.46875L16.9766 9.00781C17.0195 9.33203 17.043 9.66406 17.043 10C17.043 10.3359 17.0195 10.668 16.9766 10.9922L18.668 12.5312C18.9375 12.7734 19.043 13.1523 18.918 13.4922C18.7461 13.957 18.5391 14.4023 18.3008 14.832L18.1172 15.1484C17.8594 15.5781 17.5703 15.9844 17.2539 16.3672C17.0234 16.6484 16.6406 16.7422 16.2969 16.6328L14.1211 15.9414C13.5977 16.3438 13.0195 16.6797 12.4024 16.9336L11.9141 19.1641C11.8359 19.5195 11.5625 19.8008 11.2031 19.8594C10.6641 19.9492 10.1094 19.9961 9.54298 19.9961C8.97657 19.9961 8.42188 19.9492 7.88282 19.8594C7.52345 19.8008 7.25001 19.5195 7.17188 19.1641L6.6836 16.9336C6.06642 16.6797 5.48829 16.3438 4.96485 15.9414L2.79298 16.6367C2.44923 16.7461 2.06642 16.6484 1.83595 16.3711C1.51954 15.9883 1.23048 15.582 0.972666 15.1523L0.789073 14.8359C0.550791 14.4062 0.34376 13.9609 0.171885 13.4961C0.046885 13.1562 0.152354 12.7773 0.421885 12.5352L2.11329 10.9961C2.07032 10.668 2.04689 10.3359 2.04689 10C2.04689 9.66406 2.07032 9.33203 2.11329 9.00781L0.421885 7.46875C0.152354 7.22656 0.046885 6.84766 0.171885 6.50781C0.34376 6.04297 0.550791 5.59766 0.789073 5.16797L0.972666 4.85156C1.23048 4.42188 1.51954 4.01562 1.83595 3.63281C2.06642 3.35156 2.44923 3.25781 2.79298 3.36719L4.96876 4.05859C5.4922 3.65625 6.07032 3.32031 6.68751 3.06641L7.17579 0.835938C7.25392 0.480469 7.52735 0.199219 7.88673 0.140625C8.42579 0.046875 8.98048 0 9.54688 0C10.1133 0 10.668 0.046875 11.207 0.136719C11.5664 0.195312 11.8399 0.476562 11.918 0.832031L12.4063 3.0625C13.0234 3.31641 13.6016 3.65234 14.125 4.05469L16.3008 3.36328C16.6445 3.25391 17.0274 3.35156 17.2578 3.62891C17.5742 4.01172 17.8633 4.41797 18.1211 4.84766L18.3047 5.16406C18.543 5.59375 18.75 6.03906 18.9219 6.50391L18.918 6.50781ZM9.54688 13.125C10.3757 13.125 11.1705 12.7958 11.7566 12.2097C12.3426 11.6237 12.6719 10.8288 12.6719 10C12.6719 9.1712 12.3426 8.37634 11.7566 7.79029C11.1705 7.20424 10.3757 6.875 9.54688 6.875C8.71808 6.875 7.92323 7.20424 7.33718 7.79029C6.75112 8.37634 6.42189 9.1712 6.42189 10C6.42189 10.8288 6.75112 11.6237 7.33718 12.2097C7.92323 12.7958 8.71808 13.125 9.54688 13.125Z"
+              fill="#9CA3AF"
+            />
+          </svg>
+        </span>
+        <span>Settings</span>
+      </a>
     </nav>
-</body>
+  </body>
 </html>
