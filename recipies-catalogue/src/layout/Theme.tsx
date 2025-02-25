@@ -123,6 +123,7 @@ const initializeTheme = () => {
     },
     palette: {
       primary: {
+        dark: "#0E9E6F",
         main: "#10B981",
         light: "#1EDA9C",
       },
