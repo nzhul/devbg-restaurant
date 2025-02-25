@@ -1,5 +1,19 @@
 import { alpha } from "@mui/material";
 import createTheme from "@mui/material/styles/createTheme";
+import {
+  primitiveColorPrimaryDark,
+  primitiveColorPrimaryLight,
+  primitiveColorPrimaryMain,
+  primitiveColorSecondaryDark,
+  primitiveColorSecondaryLight,
+  primitiveColorSecondaryMain,
+  primitiveTextPrimaryColor,
+  primitiveTextSecondaryColor,
+  semanticsButtonsPrimaryTextColor,
+} from "@nzhul/devbg-design-tokens/js/tokens.js";
+
+// todo: use all semantic tokens!
+
 const initializeTheme = () => {
   return createTheme({
     typography: {
@@ -16,7 +30,7 @@ const initializeTheme = () => {
               ownerState.color === "primary"
             ) {
               styles = {
-                color: theme.palette.text.primary,
+                color: semanticsButtonsPrimaryTextColor,
                 "&:hover": {
                   backgroundColor: theme.palette.primary.light,
                 },
@@ -123,21 +137,21 @@ const initializeTheme = () => {
     },
     palette: {
       primary: {
-        dark: "#0E9E6F",
-        main: "#10B981",
-        light: "#1EDA9C",
+        dark: primitiveColorPrimaryDark,
+        main: primitiveColorPrimaryMain,
+        light: primitiveColorPrimaryLight,
       },
       secondary: {
-        main: "#1F2937",
-        dark: "#111827",
-        light: "#2D3748",
+        main: primitiveColorSecondaryMain,
+        dark: primitiveColorSecondaryDark,
+        light: primitiveColorSecondaryLight,
       },
       custom: {
-        searchBorder: "#111827",
+        searchBorder: primitiveColorSecondaryDark,
       },
       text: {
-        primary: "#D1D5DB",
-        secondary: "#9CA3AF",
+        primary: primitiveTextPrimaryColor,
+        secondary: primitiveTextSecondaryColor,
       },
     },
   });

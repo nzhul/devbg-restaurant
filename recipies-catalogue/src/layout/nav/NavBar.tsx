@@ -135,9 +135,7 @@ function NavBar() {
               />
             </Search>
             <Button startIcon={<Add />} variant="contained" color="primary">
-              <Typography sx={{ color: "white", fontSize: 16 }}>
-                New Recipe
-              </Typography>
+              <Typography sx={{ fontSize: 16 }}>New Recipe</Typography>
             </Button>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
