@@ -1,5 +1,5 @@
 {
-  "name": "shift-master",
+  "name": "online-shop",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "@nzhul/devbg-design-tokens": "^0.0.1"
   }
 }
