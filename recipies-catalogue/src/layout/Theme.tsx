@@ -1,23 +1,30 @@
-import { alpha } from "@mui/material";
 import createTheme from "@mui/material/styles/createTheme";
 import {
   primitiveColorPrimaryDark,
+  primitiveColorPrimaryDark3,
   primitiveColorPrimaryLight,
   primitiveColorPrimaryMain,
   primitiveColorSecondaryDark,
   primitiveColorSecondaryLight,
   primitiveColorSecondaryMain,
+  primitiveTextFontFamily,
   primitiveTextPrimaryColor,
   primitiveTextSecondaryColor,
+  semanticsButtonsBorderRadiusLg,
+  semanticsButtonsPrimaryBgColorEnabled,
+  semanticsButtonsPrimaryBgColorHover,
   semanticsButtonsPrimaryTextColor,
+  semanticsButtonsSecondaryBgColorEnabled,
+  semanticsButtonsSecondaryBgColorHover,
+  semanticsCardsBackgroundColor,
+  semanticsCardsBorderRadius,
+  semanticsCardsChipsText,
 } from "@nzhul/devbg-design-tokens/js/tokens.js";
-
-// todo: use all semantic tokens!
 
 const initializeTheme = () => {
   return createTheme({
     typography: {
-      fontFamily: "Roboto, sans-serif",
+      fontFamily: primitiveTextFontFamily,
     },
     components: {
       MuiButton: {
@@ -31,8 +38,9 @@ const initializeTheme = () => {
             ) {
               styles = {
                 color: semanticsButtonsPrimaryTextColor,
+                backgroundColor: semanticsButtonsPrimaryBgColorEnabled,
                 "&:hover": {
-                  backgroundColor: theme.palette.primary.light,
+                  backgroundColor: semanticsButtonsPrimaryBgColorHover,
                 },
               };
             }
@@ -42,16 +50,16 @@ const initializeTheme = () => {
               ownerState.color === "secondary"
             ) {
               styles = {
-                backgroundColor: theme.palette.secondary.main,
+                backgroundColor: semanticsButtonsSecondaryBgColorEnabled,
                 "&:hover": {
-                  backgroundColor: theme.palette.secondary.light,
+                  backgroundColor: semanticsButtonsSecondaryBgColorHover,
                 },
               };
             }
 
             return {
               ...styles,
-              borderRadius: 8, // todo use tokens
+              borderRadius: semanticsButtonsBorderRadiusLg, // todo use tokens
               boxShadow: "none",
               textTransform: "none",
               fontWeight: 400,
@@ -76,16 +84,16 @@ const initializeTheme = () => {
               borderRadius: 8, // todo use tokens
               color: theme.palette.text.primary,
               fontWeight: 400,
-              backgroundColor: theme.palette.secondary.main,
+              backgroundColor: semanticsButtonsSecondaryBgColorEnabled,
               "&:hover": {
-                backgroundColor: theme.palette.secondary.light,
+                backgroundColor: semanticsButtonsSecondaryBgColorHover,
               },
               textTransform: "none",
               marginRight: 5,
               "&.Mui-selected": {
-                backgroundColor: theme.palette.primary.main,
+                backgroundColor: semanticsButtonsPrimaryBgColorEnabled,
                 "&:hover": {
-                  backgroundColor: theme.palette.primary.main,
+                  backgroundColor: semanticsButtonsPrimaryBgColorHover,
                 },
               },
             };
@@ -96,8 +104,8 @@ const initializeTheme = () => {
         styleOverrides: {
           root: ({ ownerState, theme }) => {
             return {
-              borderRadius: 12, // todo use tokens
-              backgroundColor: theme.palette.secondary.main,
+              borderRadius: semanticsCardsBorderRadius, // todo use tokens
+              backgroundColor: semanticsCardsBackgroundColor,
               color: theme.palette.text.primary,
             };
           },
@@ -105,10 +113,10 @@ const initializeTheme = () => {
       },
       MuiChip: {
         styleOverrides: {
-          root: ({ ownerState, theme }) => {
+          root: ({ ownerState }) => {
             return {
-              backgroundColor: alpha(theme.palette.primary.main, 0.2),
-              color: theme.palette.primary.main,
+              backgroundColor: primitiveColorPrimaryDark3,
+              color: semanticsCardsChipsText,
             };
           },
         },
