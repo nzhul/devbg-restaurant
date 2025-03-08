@@ -16,6 +16,7 @@ import {
   semanticsButtonsPrimaryTextColor,
   semanticsButtonsSecondaryBgColorEnabled,
   semanticsButtonsSecondaryBgColorHover,
+  semanticsButtonsSecondaryTextColor,
   semanticsCardsBackgroundColor,
   semanticsCardsBorderRadius,
   semanticsCardsChipsText,
@@ -50,6 +51,7 @@ const initializeTheme = () => {
               ownerState.color === "secondary"
             ) {
               styles = {
+                color: semanticsButtonsSecondaryTextColor,
                 backgroundColor: semanticsButtonsSecondaryBgColorEnabled,
                 "&:hover": {
                   backgroundColor: semanticsButtonsSecondaryBgColorHover,
@@ -79,10 +81,10 @@ const initializeTheme = () => {
       },
       MuiToggleButton: {
         styleOverrides: {
-          root: ({ ownerState, theme }) => {
+          root: ({ ownerState }) => {
             return {
               borderRadius: 8, // todo use tokens
-              color: theme.palette.text.primary,
+              color: semanticsButtonsSecondaryTextColor,
               fontWeight: 400,
               backgroundColor: semanticsButtonsSecondaryBgColorEnabled,
               "&:hover": {
