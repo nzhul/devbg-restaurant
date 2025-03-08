@@ -93,6 +93,7 @@ const initializeTheme = () => {
               textTransform: "none",
               marginRight: 5,
               "&.Mui-selected": {
+                color: semanticsButtonsPrimaryTextColor,
                 backgroundColor: semanticsButtonsPrimaryBgColorEnabled,
                 "&:hover": {
                   backgroundColor: semanticsButtonsPrimaryBgColorHover,
@@ -119,6 +120,7 @@ const initializeTheme = () => {
             return {
               backgroundColor: primitiveColorPrimaryDark3,
               color: semanticsCardsChipsText,
+              borderRadius: semanticsCardsBorderRadius,
             };
           },
         },

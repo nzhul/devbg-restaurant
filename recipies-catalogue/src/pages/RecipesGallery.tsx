@@ -9,6 +9,7 @@ import {
   Typography,
   Box,
   useTheme,
+  alpha,
 } from "@mui/material";
 import {
   AccessTimeFilled,
@@ -120,7 +121,7 @@ export default function RecipeGallery() {
                 position: "absolute",
                 top: 8,
                 right: 8,
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                backgroundColor: alpha(theme.palette.secondary.dark, 0.7),
                 color: theme.palette.text.primary,
                 "& .MuiChip-icon": {
                   color: theme.palette.text.primary,

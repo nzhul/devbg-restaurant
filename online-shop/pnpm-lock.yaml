@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@nzhul/devbg-design-tokens':
-        specifier: ^0.0.3
-        version: 0.0.3(style-dictionary@4.3.3)
+        specifier: ^0.0.4
+        version: 0.0.4(style-dictionary@4.3.3)
     devDependencies:
       vite:
         specifier: ^6.1.0
@@ -202,8 +202,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@nzhul/devbg-design-tokens@0.0.3':
-    resolution: {integrity: sha512-GnXHFWNLtnljBayIRSBFcrjF70T3Fd6y5m3D5rJIeAAnX1O4qiafPC9kqMd+mI8HTKfLVilhbNNNa5F/f4zHuQ==}
+  '@nzhul/devbg-design-tokens@0.0.4':
+    resolution: {integrity: sha512-qd5KfrqCAFsyfjv2KlQ0iAh/8JiESerWrWLPAzg5Ky2rh78iBf/hQtAjtRVp/3XPpDuUB/9OCElFXS0a3o02wQ==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -1088,7 +1088,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@nzhul/devbg-design-tokens@0.0.3(style-dictionary@4.3.3)':
+  '@nzhul/devbg-design-tokens@0.0.4(style-dictionary@4.3.3)':
     dependencies:
       '@tokens-studio/sd-transforms': 1.2.9(style-dictionary@4.3.3)
     transitivePeerDependencies:
