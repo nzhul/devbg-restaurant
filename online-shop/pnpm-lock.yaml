@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@nzhul/devbg-design-tokens':
-        specifier: ^0.0.5
-        version: 0.0.5(style-dictionary@4.3.3)
+        specifier: ^0.0.8
+        version: 0.0.8(style-dictionary@4.3.3)
     devDependencies:
       vite:
         specifier: ^6.1.0
@@ -190,8 +190,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@jsonjoy.com/json-pack@1.1.1':
-    resolution: {integrity: sha512-osjeBqMJ2lb/j/M8NCPjs1ylqWIcTRTycIhVB5pt6LgzgeRSb0YRZ7j9RfA8wIUrsr/medIuhVyonXRZWLyfdw==}
+  '@jsonjoy.com/json-pack@1.2.0':
+    resolution: {integrity: sha512-io1zEbbYcElht3tdlqEOFxZ0dMTYrHz9iMf0gqn1pPjZFTCgM5R4R5IMA20Chb2UPYYsxjzs8CgZ7Nb5n2K2rA==}
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
@@ -202,8 +202,8 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@nzhul/devbg-design-tokens@0.0.5':
-    resolution: {integrity: sha512-AQl8mh6DSCqIFP7HgnVwahdX4UC2n1hW6yvK4hUQ49ftbUIeBOYH9lM9FXfwFQXYKSrZhdXSOYk2H9p+uGVUcA==}
+  '@nzhul/devbg-design-tokens@0.0.8':
+    resolution: {integrity: sha512-S0Xp96iXHTkGMwIaKllqtRvnq4Xy/ToYMuZVEiw6klQZ6geGy1yX/fVi6xzun/An5Fkh772jPUIx2nseQhhDoQ==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -304,11 +304,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@tokens-studio/sd-transforms@1.2.9':
-    resolution: {integrity: sha512-doRL3tjhwmSck/9fH0X1mlBA6derw+8wpmi5hbG2vhAmvc8F89MxIN6JCKSIbVIJNvaprDVlQqSzXLG7Ug7F9A==}
+  '@tokens-studio/sd-transforms@1.2.12':
+    resolution: {integrity: sha512-YAHKYtGjwrYXp1Kh/PM/3C/e3a05+Zg6pxA4Rz3dkxPO4L/IGBE1ExKrqOZXTLRCw6JJDofQKUapAvig0iO9Fg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      style-dictionary: ^4.1.4
+      style-dictionary: ^4.3.0 || ^5.0.0-rc.0
 
   '@tokens-studio/types@0.5.2':
     resolution: {integrity: sha512-rzMcZP0bj2E5jaa7Fj0LGgYHysoCrbrxILVbT0ohsCUH5uCHY/u6J7Qw/TE0n6gR9Js/c9ZO9T8mOoz0HdLMbA==}
@@ -932,8 +932,8 @@ packages:
       yaml:
         optional: true
 
-  which-typed-array@1.1.18:
-    resolution: {integrity: sha512-qEcY+KJYlWyLH9vNbsr6/5j59AXk5ni5aakf8ldzBvGde6Iz4sxZGkJyWSAueTG7QhOvNRYb1lDdFmL5Td0QKA==}
+  which-typed-array@1.1.19:
+    resolution: {integrity: sha512-rEvr90Bck4WZt9HHFC4DJMsjvu7x+r6bImz0/BrbWb7A2djJ8hnZMrWnHo9F8ssv0OMErasDhftrfROTyqSDrw==}
     engines: {node: '>= 0.4'}
 
   which@2.0.2:
@@ -1076,7 +1076,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@jsonjoy.com/json-pack@1.1.1(tslib@2.8.1)':
+  '@jsonjoy.com/json-pack@1.2.0(tslib@2.8.1)':
     dependencies:
       '@jsonjoy.com/base64': 1.1.2(tslib@2.8.1)
       '@jsonjoy.com/util': 1.5.0(tslib@2.8.1)
@@ -1088,9 +1088,9 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@nzhul/devbg-design-tokens@0.0.5(style-dictionary@4.3.3)':
+  '@nzhul/devbg-design-tokens@0.0.8(style-dictionary@4.3.3)':
     dependencies:
-      '@tokens-studio/sd-transforms': 1.2.9(style-dictionary@4.3.3)
+      '@tokens-studio/sd-transforms': 1.2.12(style-dictionary@4.3.3)
     transitivePeerDependencies:
       - style-dictionary
 
@@ -1154,7 +1154,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.34.7':
     optional: true
 
-  '@tokens-studio/sd-transforms@1.2.9(style-dictionary@4.3.3)':
+  '@tokens-studio/sd-transforms@1.2.12(style-dictionary@4.3.3)':
     dependencies:
       '@bundled-es-modules/deepmerge': 4.3.1
       '@bundled-es-modules/postcss-calc-ast-parser': 0.1.6
@@ -1470,7 +1470,7 @@ snapshots:
 
   is-typed-array@1.1.15:
     dependencies:
-      which-typed-array: 1.1.18
+      which-typed-array: 1.1.19
 
   is-wsl@2.2.0:
     dependencies:
@@ -1514,7 +1514,7 @@ snapshots:
 
   memfs@4.17.0:
     dependencies:
-      '@jsonjoy.com/json-pack': 1.1.1(tslib@2.8.1)
+      '@jsonjoy.com/json-pack': 1.2.0(tslib@2.8.1)
       '@jsonjoy.com/util': 1.5.0(tslib@2.8.1)
       tree-dump: 1.0.2(tslib@2.8.1)
       tslib: 2.8.1
@@ -1804,7 +1804,7 @@ snapshots:
       is-arguments: 1.2.0
       is-generator-function: 1.1.0
       is-typed-array: 1.1.15
-      which-typed-array: 1.1.18
+      which-typed-array: 1.1.19
 
   vite@6.1.0(yaml@2.7.0):
     dependencies:
@@ -1815,12 +1815,13 @@ snapshots:
       fsevents: 2.3.3
       yaml: 2.7.0
 
-  which-typed-array@1.1.18:
+  which-typed-array@1.1.19:
     dependencies:
       available-typed-arrays: 1.0.7
       call-bind: 1.0.8
       call-bound: 1.0.4
       for-each: 0.3.5
+      get-proto: 1.0.1
       gopd: 1.2.0
       has-tostringtag: 1.0.2
 
